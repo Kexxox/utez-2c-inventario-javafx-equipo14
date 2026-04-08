@@ -114,14 +114,14 @@ public class ProductoController {
             return;
         }
 
-        // 3. Confirmación (Responsabilidad de la UI)
+
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmar Eliminación");
         alert.setHeaderText("¿Borrar producto: " + seleccionado.getNombre() + "?");
 
         if (alert.showAndWait().orElse(ButtonType.CANCEL) == ButtonType.OK) {
             try {
-                // 4. Delegar la eliminación y persistencia al servicio
+
                 productoService.eliminarProducto(seleccionado, masterData);
 
                 lblMsg.setText("Producto eliminado con éxito.");
