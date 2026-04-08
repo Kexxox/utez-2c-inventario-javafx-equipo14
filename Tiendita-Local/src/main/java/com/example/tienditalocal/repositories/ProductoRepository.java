@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ProductoRepository {
     private final String FOLDER_NAME = "Data";
-    private final String FILE_NAME = FOLDER_NAME + "/persons.csv";
+    private final String FILE_NAME = FOLDER_NAME + "/Producto.csv";
 
 
     public void saveAll(List<Producto> productos) {
