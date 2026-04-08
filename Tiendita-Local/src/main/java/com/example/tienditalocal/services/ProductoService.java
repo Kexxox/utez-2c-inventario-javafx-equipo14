@@ -56,7 +56,7 @@ public class ProductoService {
                     producto.getCodigo().toLowerCase().contains(term);
         });
     }
-    public void actualizarProducto(Producto existente, String nombre, String precioStr, int stock, String categoria, ObservableList<Producto> listaActual) throws Exception {
+    public void actualizarProducto(Producto existente,String codigo, String nombre, String precioStr, int stock, String categoria, ObservableList<Producto> listaActual) throws Exception {
         if (nombre.length() < 3) {
             throw new Exception("El nombre debe tener al menos 3 caracteres.");
         }
@@ -76,6 +76,7 @@ public class ProductoService {
         existente.setPrecio(precio);
         existente.setStock(stock);
         existente.setCategoria(categoria);
+        existente.setCodigo(codigo);
 
         repository.saveAll(new ArrayList<>(listaActual));
     }

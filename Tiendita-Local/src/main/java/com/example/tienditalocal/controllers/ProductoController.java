@@ -30,36 +30,34 @@ public class ProductoController {
 
     @FXML
     public void initialize() {
-        // 1. Configurar columnas
+
         colCodigo.setCellValueFactory(new PropertyValueFactory<>("codigo"));
         colNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         colPrecio.setCellValueFactory(new PropertyValueFactory<>("precio"));
         colStock.setCellValueFactory(new PropertyValueFactory<>("stock"));
         colCat.setCellValueFactory(new PropertyValueFactory<>("categoria"));
 
-        // 2. Configurar ComboBox
         cmbCategoria.setItems(FXCollections.observableArrayList(
                 "Lácteos", "Limpieza", "Frutas y Verduras", "Carnes"
         ));
 
-        // 3. Cargar datos usando el SERVICIO (limpia la lista y carga)
+
         productoService.cargarDatos(masterData);
 
-        // 4. Configurar Filtrado y Ordenamiento
+
         FilteredList<Producto> filteredData = new FilteredList<>(masterData, p -> true);
 
-        // OPCIONAL: Esto permite que la tabla se pueda ordenar por columnas (clic en cabecera)
+
         SortedList<Producto> sortedData = new SortedList<>(filteredData);
         sortedData.comparatorProperty().bind(tableProductos.comparatorProperty());
 
         tableProductos.setItems(sortedData);
 
-        // 5. Listener de Búsqueda (Llamando al servicio)
         txtBusqueda.textProperty().addListener((obs, oldVal, newVal) -> {
             productoService.configurarFiltro(filteredData, newVal);
         });
 
-        // 6. Listener de Selección (Para llenar los campos al hacer clic en la fila)
+
         tableProductos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             if (newSelection != null) {
                 txtNombre.setText(newSelection.getNombre());
@@ -74,15 +72,13 @@ public class ProductoController {
     @FXML
     private void onAgregar() {
         try {
-            // 1. Validación básica de campos vacíos (UI)
+
             if (txtCodigo.getText().isEmpty() || txtNombre.getText().isEmpty() ||
                     txtPrecio.getText().isEmpty() || cmbCategoria.getValue() == null) {
                 mostrarAlerta("Error", "Todos los campos son obligatorios.");
                 return;
             }
 
-            // 2. Crear el objeto temporal con los datos de la vista
-            // (El manejo de errores numéricos se queda en el try-catch)
             Producto p = new Producto(
                     txtCodigo.getText(),
                     txtNombre.getText(),
@@ -91,17 +87,16 @@ public class ProductoController {
                     cmbCategoria.getValue()
             );
 
-            // 3. Delegar TODA la lógica al servicio
             productoService.registrarProducto(p, masterData);
 
-            // 4. Feedback de éxito
+
             limpiarCampos();
             lblMsg.setText("Producto agregado con éxito.");
 
         } catch (NumberFormatException e) {
             mostrarAlerta("Error de formato", "Precio y Stock deben ser valores numéricos válidos.");
         } catch (IllegalArgumentException e) {
-            // Aquí capturamos los mensajes que enviamos desde el Service
+
             mostrarAlerta("Error de validación", e.getMessage());
         } catch (Exception e) {
             mostrarAlerta("Error inesperado", "Ocurrió un error al guardar: " + e.getMessage());
@@ -110,10 +105,10 @@ public class ProductoController {
 
     @FXML
     private void onEliminar() {
-        // 1. Obtener selección
+
         Producto seleccionado = tableProductos.getSelectionModel().getSelectedItem();
 
-        // 2. Validar selección
+
         if (seleccionado == null) {
             mostrarAlerta("Atención", "Selecciona un producto de la tabla.");
             return;
@@ -145,26 +140,22 @@ public class ProductoController {
         }
 
         try {
-            // Validamos vacíos rápido en la UI
+
             if (txtNombre.getText().isEmpty() || txtPrecio.getText().isEmpty()) {
                 mostrarAlerta("Error", "Los campos no pueden estar vacíos.");
                 return;
             }
 
-            // Llamamos al servicio para procesar el cambio
-            productoService.actualizarProducto(
-                    seleccionado,
-                    txtNombre.getText(),
-                    txtPrecio.getText(),
-                    Integer.parseInt(txtStock.getText()),
-                    cmbCategoria.getValue(),
-                    masterData
-            );
 
-            // Actualizamos la interfaz
-            tableProductos.refresh(); // Refresca visualmente la fila editada
+            productoService.actualizarProducto(seleccionado,txtCodigo.getText(),txtNombre.getText()
+                    ,txtPrecio.getText(),
+                    Integer.parseInt(txtStock.getText()),
+                    cmbCategoria.getValue(),masterData);
+
+
+            tableProductos.refresh();
             limpiarCampos();
-            txtCodigo.setEditable(true); // Desbloqueamos el código si estaba bloqueado
+            txtCodigo.setEditable(true);
             lblMsg.setText("Producto actualizado con éxito.");
 
         } catch (NumberFormatException e) {
