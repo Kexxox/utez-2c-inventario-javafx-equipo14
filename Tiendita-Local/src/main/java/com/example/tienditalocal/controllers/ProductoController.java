@@ -164,7 +164,7 @@ public class ProductoController {
         }
     }
     @FXML
-    private void onLimpiar(){
+    private void onLimpiar (){
         Producto seleccionado = tableProductos.getSelectionModel().getSelectedItem();
         if (seleccionado == null) {
             mostrarAlerta("Atención", "Selecciona un producto de la tabla para editar.");
