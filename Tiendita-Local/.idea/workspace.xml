@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="caea2d4c-1cbe-4ba7-8f44-524d12e4c27c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
+=======
+    <list default="true" id="a47cb189-cacd-4103-b713-5a51e751794e" name="Changes" comment="" />
+>>>>>>> Kexxox/kevin-rios
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,7 +35,10 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+<<<<<<< HEAD
     "git-widget-placeholder": "dev",
+=======
+>>>>>>> Kexxox/kevin-rios
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/luisf/OneDrive/Desktop/utez-2c-inventario-javafx-equipo14/Tiendita-Local",
     "node.js.detected.package.eslint": "true",

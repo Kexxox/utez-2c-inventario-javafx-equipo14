@@ -114,7 +114,6 @@ public class ProductoController {
             return;
         }
 
-
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmar Eliminación");
         alert.setHeaderText("¿Borrar producto: " + seleccionado.getNombre() + "?");
@@ -163,6 +162,17 @@ public class ProductoController {
         } catch (Exception e) {
             mostrarAlerta("Error", e.getMessage());
         }
+    }
+    @FXML
+    private void onLimpiar(){
+        Producto seleccionado = tableProductos.getSelectionModel().getSelectedItem();
+        if (seleccionado == null) {
+            mostrarAlerta("Atención", "Selecciona un producto de la tabla para editar.");
+            return;
+        }
+        tableProductos.getSelectionModel().clearSelection();
+        limpiarCampos();
+
     }
     private void limpiarCampos() {
         txtCodigo.clear();
