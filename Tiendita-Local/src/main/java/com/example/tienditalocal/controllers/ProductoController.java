@@ -163,17 +163,6 @@ public class ProductoController {
             mostrarAlerta("Error", e.getMessage());
         }
     }
-    @FXML
-    private void onLimpiar(){
-        Producto seleccionado = tableProductos.getSelectionModel().getSelectedItem();
-        if (seleccionado == null) {
-            mostrarAlerta("Atención", "Selecciona un producto de la tabla para editar.");
-            return;
-        }
-        tableProductos.getSelectionModel().clearSelection();
-        limpiarCampos();
-
-    }
     private void limpiarCampos() {
         txtCodigo.clear();
         txtNombre.clear();
