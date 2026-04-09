@@ -1,6 +1,7 @@
 module com.example.tienditalocal {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
     exports com.example.tienditalocal to javafx.graphics;
     exports com.example.tienditalocal.controllers;

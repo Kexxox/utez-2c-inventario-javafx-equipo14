@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -27,16 +22,16 @@
 
             <children>
                 <Label text="Código:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-                <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+                <TextField fx:id="txtCodigo" GridPane.columnIndex="1" GridPane.rowIndex="0" promptText="Ingresa el codigo del producto"  />
 
                 <Label text="Nombre:" GridPane.columnIndex="2" GridPane.rowIndex="0" />
-                <TextField fx:id="txtNombre" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+                <TextField fx:id="txtNombre" GridPane.columnIndex="3" GridPane.rowIndex="0" promptText="Ingresa el nombre del producto" />
 
                 <Label text="Precio:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
-                <TextField fx:id="txtPrecio" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <TextField fx:id="txtPrecio" GridPane.columnIndex="1" GridPane.rowIndex="1"  promptText="Ingresa el precio del producto"/>
 
                 <Label text="Stock:" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                <TextField fx:id="txtStock" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                <TextField fx:id="txtStock" GridPane.columnIndex="3" GridPane.rowIndex="1"  promptText="Ingresa el stock disponible del producto"/>
 
                 <Label text="Categoría:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
                 <ComboBox fx:id="cmbCategoria" maxWidth="Infinity" promptText="Seleccione una categoría..." GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -53,8 +48,10 @@
                 <Button onAction="#onAgregar" style="-fx-background-color: #2ecc71; -fx-text-fill: white;" text="Guardar " />
                 <Button onAction="#onEliminar" style="-fx-background-color: #e74c3c; -fx-text-fill: white;" text="Eliminar " />
                 <Button onAction="#onEditar" style="-fx-background-color: #000000; -fx-text-fill: white ;" text="Editar" />
+            <Button onAction="#onLimpiar" style="-fx-background-color: #3504D6; -fx-text-fill: white ;" text="Limpiar" />
             </children>
         </HBox>
+      <Label prefHeight="17.0" prefWidth="335.0" text="Pulsar boton para generar la opcion correspondiente" />
 
         <HBox alignment="CENTER_LEFT" spacing="10">
             <Label style="-fx-font-weight: bold;" text="Buscar:" />
