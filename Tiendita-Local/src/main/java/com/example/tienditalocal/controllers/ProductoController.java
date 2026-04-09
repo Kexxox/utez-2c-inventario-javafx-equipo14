@@ -114,7 +114,6 @@ public class ProductoController {
             return;
         }
 
-
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmar Eliminación");
         alert.setHeaderText("¿Borrar producto: " + seleccionado.getNombre() + "?");
